@@ -15,8 +15,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Adding Tiles"
-run/main_scene="res://Scenes/World.tscn"
+config/name="Ball Bounce"
+run/main_scene="res://World.tscn"
 config/icon="res://icon.png"
 
 [rendering]
