@@ -1,15 +1,13 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scriptspaddle.gd" type="Script" id=1]
 [ext_resource path="res://Assets/paddle.png" type="Texture" id=2]
 [ext_resource path="res://Assets/ball.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/tiles.gd" type="Script" id=4]
-[ext_resource path="res://Assets/tile_gray.png" type="Texture" id=5]
-[ext_resource path="res://tile.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Assets/tile_red.png" type="Texture" id=7]
-[ext_resource path="res://Assets/tile_blue.png" type="Texture" id=8]
-[ext_resource path="res://Assets/tile_green.png" type="Texture" id=9]
-[ext_resource path="res://Assets/tile_yellow.png" type="Texture" id=10]
+[ext_resource path="res://tile.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/tile_blue.png" type="Texture" id=6]
+[ext_resource path="res://Assets/tile_green.png" type="Texture" id=7]
+[ext_resource path="res://Assets/tile_yellow.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 52.5812, 12.4685 )
@@ -37,12 +35,6 @@ func _physics_process(delta):
 [sub_resource type="CircleShape2D" id=4]
 radius = 15.2775
 
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 32.8897, 16.6645 )
-
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 32.2701, 16.0585 )
-
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 31.053, 13.5828 )
 
@@ -58,18 +50,22 @@ position = Vector2( 97.5784, 69.9624 )
 [node name="World" type="Node" parent="."]
 
 [node name="paddle" type="KinematicBody2D" parent="World"]
-editor/display_folded = true
-position = Vector2( 544, 384 )
+position = Vector2( 516, 533 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Sprite" type="Sprite" parent="World/paddle"]
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/paddle"]
+position = Vector2( 1, -1 )
 shape = SubResource( 1 )
 
 [node name="ball" type="RigidBody2D" parent="World"]
-position = Vector2( 544, 352 )
+editor/display_folded = true
+position = Vector2( 517, 488 )
 physics_material_override = SubResource( 2 )
 gravity_scale = 0.0
 linear_velocity = Vector2( 200, -200 )
@@ -90,6 +86,7 @@ __meta__ = {
 }
 
 [node name="wall" type="StaticBody2D" parent="World"]
+editor/display_folded = true
 position = Vector2( 1.22769, 1.22774 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="World/wall"]
@@ -99,451 +96,387 @@ polygon = PoolVector2Array( -1.22769, -1.22774, 1024.06, -4.80765, 1022.77, 606.
 [node name="Tiles" type="Node" parent="World"]
 script = ExtResource( 4 )
 
-[node name="grey tiles" type="Node" parent="World/Tiles"]
+[node name="Grey Tiles" type="Node" parent="World/Tiles"]
 
-[node name="Sprite" type="Sprite" parent="World/Tiles/grey tiles"]
-position = Vector2( 111.911, 249.308 )
-texture = ExtResource( 5 )
+[node name="Tile1" parent="World/Tiles/Grey Tiles" instance=ExtResource( 5 )]
+position = Vector2( 108.911, 257.308 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="World/Tiles/grey tiles/Sprite"]
+[node name="Tile2" parent="World/Tiles/Grey Tiles" instance=ExtResource( 5 )]
+position = Vector2( 946.911, 262.308 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/grey tiles/Sprite/StaticBody2D"]
-position = Vector2( 1.10803, 1.10803 )
-shape = SubResource( 5 )
+[node name="Tile3" parent="World/Tiles/Grey Tiles" instance=ExtResource( 5 )]
+position = Vector2( 853.911, 259.308 )
 
-[node name="red tiles" type="Node" parent="World/Tiles"]
+[node name="Tile4" parent="World/Tiles/Grey Tiles" instance=ExtResource( 5 )]
+position = Vector2( 749.911, 261.308 )
 
-[node name="Sprite" parent="World/Tiles/red tiles" instance=ExtResource( 6 )]
-editor/display_folded = true
-position = Vector2( 108.236, 198.848 )
-texture = ExtResource( 7 )
+[node name="Tile5" parent="World/Tiles/Grey Tiles" instance=ExtResource( 5 )]
+position = Vector2( 644.911, 252.308 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/red tiles/Sprite"]
-position = Vector2( 1.03181, -1.05261 )
-shape = SubResource( 6 )
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="Tile6" parent="World/Tiles/Grey Tiles" instance=ExtResource( 5 )]
+position = Vector2( 538.911, 253.308 )
 
-[node name="Sprite2" parent="World/Tiles/red tiles" instance=ExtResource( 6 )]
-editor/display_folded = true
-position = Vector2( 952.447, 195.69 )
-texture = ExtResource( 7 )
+[node name="Tile7" parent="World/Tiles/Grey Tiles" instance=ExtResource( 5 )]
+position = Vector2( 419.911, 253.308 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/red tiles/Sprite2"]
-position = Vector2( 1.03181, -1.05261 )
-shape = SubResource( 6 )
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="Tile8" parent="World/Tiles/Grey Tiles" instance=ExtResource( 5 )]
+position = Vector2( 321.911, 250.308 )
 
-[node name="Sprite3" parent="World/Tiles/red tiles" instance=ExtResource( 6 )]
-editor/display_folded = true
-position = Vector2( 862.973, 193.585 )
-texture = ExtResource( 7 )
+[node name="Tile9" parent="World/Tiles/Grey Tiles" instance=ExtResource( 5 )]
+position = Vector2( 214.911, 253.308 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/red tiles/Sprite3"]
-position = Vector2( 1.03181, -1.05261 )
-shape = SubResource( 6 )
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="Red Tiles" type="Node" parent="World/Tiles"]
 
-[node name="Sprite4" parent="World/Tiles/red tiles" instance=ExtResource( 6 )]
-editor/display_folded = true
-position = Vector2( 750.342, 194.637 )
-texture = ExtResource( 7 )
+[node name="Tile1" parent="World/Tiles/Red Tiles" instance=ExtResource( 5 )]
+position = Vector2( 952.911, 213.308 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/red tiles/Sprite4"]
-position = Vector2( 1.03181, -1.05261 )
-shape = SubResource( 6 )
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="Tile2" parent="World/Tiles/Red Tiles" instance=ExtResource( 5 )]
+position = Vector2( 855.911, 204.308 )
 
-[node name="Sprite5" parent="World/Tiles/red tiles" instance=ExtResource( 6 )]
-editor/display_folded = true
-position = Vector2( 644.026, 192.532 )
-texture = ExtResource( 7 )
+[node name="Tile3" parent="World/Tiles/Red Tiles" instance=ExtResource( 5 )]
+position = Vector2( 747.911, 207.308 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/red tiles/Sprite5"]
-position = Vector2( 1.03181, -1.05261 )
-shape = SubResource( 6 )
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="Tile4" parent="World/Tiles/Red Tiles" instance=ExtResource( 5 )]
+position = Vector2( 643.911, 204.308 )
 
-[node name="Sprite6" parent="World/Tiles/red tiles" instance=ExtResource( 6 )]
-editor/display_folded = true
-position = Vector2( 538.763, 197.795 )
-texture = ExtResource( 7 )
+[node name="Tile5" parent="World/Tiles/Red Tiles" instance=ExtResource( 5 )]
+position = Vector2( 533.911, 198.308 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/red tiles/Sprite6"]
-position = Vector2( 1.03181, -1.05261 )
-shape = SubResource( 6 )
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="Tile6" parent="World/Tiles/Red Tiles" instance=ExtResource( 5 )]
+position = Vector2( 421.911, 199.308 )
 
-[node name="Sprite7" parent="World/Tiles/red tiles" instance=ExtResource( 6 )]
-editor/display_folded = true
-position = Vector2( 421.921, 195.69 )
-texture = ExtResource( 7 )
+[node name="Tile7" parent="World/Tiles/Red Tiles" instance=ExtResource( 5 )]
+position = Vector2( 318.911, 195.308 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/red tiles/Sprite7"]
-position = Vector2( 1.03181, -1.05261 )
-shape = SubResource( 6 )
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="Tile8" parent="World/Tiles/Red Tiles" instance=ExtResource( 5 )]
+position = Vector2( 214.911, 195.308 )
 
-[node name="Sprite8" parent="World/Tiles/red tiles" instance=ExtResource( 6 )]
-editor/display_folded = true
-position = Vector2( 319.815, 192.532 )
-texture = ExtResource( 7 )
+[node name="Tile9" parent="World/Tiles/Red Tiles" instance=ExtResource( 5 )]
+position = Vector2( 107.911, 201.308 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/red tiles/Sprite8"]
-position = Vector2( 1.03181, -1.05261 )
-shape = SubResource( 6 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Sprite9" parent="World/Tiles/red tiles" instance=ExtResource( 6 )]
-editor/display_folded = true
-position = Vector2( 220.868, 194.637 )
-texture = ExtResource( 7 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/red tiles/Sprite9"]
-position = Vector2( 1.03181, -1.05261 )
-shape = SubResource( 6 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="blue tiles" type="Node" parent="World/Tiles"]
+[node name="Blue Tiles" type="Node" parent="World/Tiles"]
 editor/display_folded = true
 
-[node name="Sprite7" parent="World/Tiles/blue tiles" instance=ExtResource( 6 )]
+[node name="Sprite7" parent="World/Tiles/Blue Tiles" instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( 103.535, 144.594 )
-texture = ExtResource( 8 )
+texture = ExtResource( 6 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/blue tiles/Sprite7"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/Blue Tiles/Sprite7"]
 position = Vector2( 0.980209, 0 )
 shape = SubResource( 7 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite15" parent="World/Tiles/blue tiles" instance=ExtResource( 6 )]
+[node name="Sprite15" parent="World/Tiles/Blue Tiles" instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( 951.956, 147.752 )
-texture = ExtResource( 8 )
+texture = ExtResource( 6 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/blue tiles/Sprite15"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/Blue Tiles/Sprite15"]
 position = Vector2( 0.980209, 0 )
 shape = SubResource( 7 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite14" parent="World/Tiles/blue tiles" instance=ExtResource( 6 )]
+[node name="Sprite14" parent="World/Tiles/Blue Tiles" instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( 858.272, 144.594 )
-texture = ExtResource( 8 )
+texture = ExtResource( 6 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/blue tiles/Sprite14"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/Blue Tiles/Sprite14"]
 position = Vector2( 0.980209, 0 )
 shape = SubResource( 7 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite13" parent="World/Tiles/blue tiles" instance=ExtResource( 6 )]
+[node name="Sprite13" parent="World/Tiles/Blue Tiles" instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( 748.798, 143.542 )
-texture = ExtResource( 8 )
+texture = ExtResource( 6 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/blue tiles/Sprite13"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/Blue Tiles/Sprite13"]
 position = Vector2( 0.980209, 0 )
 shape = SubResource( 7 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite12" parent="World/Tiles/blue tiles" instance=ExtResource( 6 )]
+[node name="Sprite12" parent="World/Tiles/Blue Tiles" instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( 644.588, 143.542 )
-texture = ExtResource( 8 )
+texture = ExtResource( 6 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/blue tiles/Sprite12"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/Blue Tiles/Sprite12"]
 position = Vector2( 0.980209, 0 )
 shape = SubResource( 7 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite11" parent="World/Tiles/blue tiles" instance=ExtResource( 6 )]
+[node name="Sprite11" parent="World/Tiles/Blue Tiles" instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( 539.325, 149.858 )
-texture = ExtResource( 8 )
+texture = ExtResource( 6 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/blue tiles/Sprite11"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/Blue Tiles/Sprite11"]
 position = Vector2( 0.980209, 0 )
 shape = SubResource( 7 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite10" parent="World/Tiles/blue tiles" instance=ExtResource( 6 )]
+[node name="Sprite10" parent="World/Tiles/Blue Tiles" instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( 425.641, 145.647 )
-texture = ExtResource( 8 )
+texture = ExtResource( 6 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/blue tiles/Sprite10"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/Blue Tiles/Sprite10"]
 position = Vector2( 0.980209, 0 )
 shape = SubResource( 7 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite9" parent="World/Tiles/blue tiles" instance=ExtResource( 6 )]
+[node name="Sprite9" parent="World/Tiles/Blue Tiles" instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( 321.43, 146.7 )
-texture = ExtResource( 8 )
+texture = ExtResource( 6 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/blue tiles/Sprite9"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/Blue Tiles/Sprite9"]
 position = Vector2( 0.980209, 0 )
 shape = SubResource( 7 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite8" parent="World/Tiles/blue tiles" instance=ExtResource( 6 )]
+[node name="Sprite8" parent="World/Tiles/Blue Tiles" instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( 219.325, 146.7 )
-texture = ExtResource( 8 )
+texture = ExtResource( 6 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/blue tiles/Sprite8"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/Blue Tiles/Sprite8"]
 position = Vector2( 0.980209, 0 )
 shape = SubResource( 7 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="green tiles" type="Node" parent="World/Tiles"]
+[node name="Green Tiles" type="Node" parent="World/Tiles"]
 editor/display_folded = true
 
-[node name="Sprite7" parent="World/Tiles/green tiles" instance=ExtResource( 6 )]
+[node name="Sprite7" parent="World/Tiles/Green Tiles" instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( 103.843, 97.4528 )
-texture = ExtResource( 9 )
+texture = ExtResource( 7 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/green tiles/Sprite7"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/Green Tiles/Sprite7"]
 position = Vector2( -0.980209, -1 )
 shape = SubResource( 8 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite8" parent="World/Tiles/green tiles" instance=ExtResource( 6 )]
+[node name="Sprite8" parent="World/Tiles/Green Tiles" instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( 953.79, 94.2423 )
-texture = ExtResource( 9 )
+texture = ExtResource( 7 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/green tiles/Sprite8"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/Green Tiles/Sprite8"]
 shape = SubResource( 8 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite9" parent="World/Tiles/green tiles" instance=ExtResource( 6 )]
+[node name="Sprite9" parent="World/Tiles/Green Tiles" instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( 859.58, 90.9791 )
-texture = ExtResource( 9 )
+texture = ExtResource( 7 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/green tiles/Sprite9"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/Green Tiles/Sprite9"]
 shape = SubResource( 8 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite10" parent="World/Tiles/green tiles" instance=ExtResource( 6 )]
+[node name="Sprite10" parent="World/Tiles/Green Tiles" instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( 751.58, 93.9791 )
-texture = ExtResource( 9 )
+texture = ExtResource( 7 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/green tiles/Sprite10"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/Green Tiles/Sprite10"]
 position = Vector2( 0, -1 )
 shape = SubResource( 8 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite11" parent="World/Tiles/green tiles" instance=ExtResource( 6 )]
+[node name="Sprite11" parent="World/Tiles/Green Tiles" instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( 639.58, 95.9791 )
-texture = ExtResource( 9 )
+texture = ExtResource( 7 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/green tiles/Sprite11"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/Green Tiles/Sprite11"]
 shape = SubResource( 8 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite12" parent="World/Tiles/green tiles" instance=ExtResource( 6 )]
+[node name="Sprite12" parent="World/Tiles/Green Tiles" instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( 534.58, 98.9791 )
-texture = ExtResource( 9 )
+texture = ExtResource( 7 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/green tiles/Sprite12"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/Green Tiles/Sprite12"]
 shape = SubResource( 8 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite13" parent="World/Tiles/green tiles" instance=ExtResource( 6 )]
+[node name="Sprite13" parent="World/Tiles/Green Tiles" instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( 418.58, 92.9791 )
-texture = ExtResource( 9 )
+texture = ExtResource( 7 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/green tiles/Sprite13"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/Green Tiles/Sprite13"]
 position = Vector2( 0.980209, 1 )
 shape = SubResource( 8 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite14" parent="World/Tiles/green tiles" instance=ExtResource( 6 )]
+[node name="Sprite14" parent="World/Tiles/Green Tiles" instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( 318.159, 93.9791 )
-texture = ExtResource( 9 )
+texture = ExtResource( 7 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/green tiles/Sprite14"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/Green Tiles/Sprite14"]
 position = Vector2( 0.980209, 1 )
 shape = SubResource( 8 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite15" parent="World/Tiles/green tiles" instance=ExtResource( 6 )]
+[node name="Sprite15" parent="World/Tiles/Green Tiles" instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( 216.685, 94.1896 )
-texture = ExtResource( 9 )
+texture = ExtResource( 7 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/green tiles/Sprite15"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/Green Tiles/Sprite15"]
 position = Vector2( -0.980209, 1 )
 shape = SubResource( 8 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="yellow tiles" type="Node" parent="World/Tiles"]
+[node name="Yellow Tiles" type="Node" parent="World/Tiles"]
 editor/display_folded = true
 
-[node name="Sprite3" parent="World/Tiles/yellow tiles" instance=ExtResource( 6 )]
+[node name="Sprite3" parent="World/Tiles/Yellow Tiles" instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( 105.659, 44.0735 )
-texture = ExtResource( 10 )
+texture = ExtResource( 8 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/yellow tiles/Sprite3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/Yellow Tiles/Sprite3"]
 position = Vector2( 0, -1 )
 shape = SubResource( 9 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite4" parent="World/Tiles/yellow tiles" instance=ExtResource( 6 )]
+[node name="Sprite4" parent="World/Tiles/Yellow Tiles" instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( 212.238, 40.863 )
-texture = ExtResource( 10 )
+texture = ExtResource( 8 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/yellow tiles/Sprite4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/Yellow Tiles/Sprite4"]
 position = Vector2( 0, -1 )
 shape = SubResource( 9 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite8" parent="World/Tiles/yellow tiles" instance=ExtResource( 6 )]
+[node name="Sprite8" parent="World/Tiles/Yellow Tiles" instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( 952.975, 39.863 )
-texture = ExtResource( 10 )
+texture = ExtResource( 8 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/yellow tiles/Sprite8"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/Yellow Tiles/Sprite8"]
 position = Vector2( 0, -1 )
 shape = SubResource( 9 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite9" parent="World/Tiles/yellow tiles" instance=ExtResource( 6 )]
+[node name="Sprite9" parent="World/Tiles/Yellow Tiles" instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( 859.975, 36.8104 )
-texture = ExtResource( 10 )
+texture = ExtResource( 8 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/yellow tiles/Sprite9"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/Yellow Tiles/Sprite9"]
 position = Vector2( 0, -1 )
 shape = SubResource( 9 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite5" parent="World/Tiles/yellow tiles" instance=ExtResource( 6 )]
+[node name="Sprite5" parent="World/Tiles/Yellow Tiles" instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( 746.343, 37.8104 )
-texture = ExtResource( 10 )
+texture = ExtResource( 8 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/yellow tiles/Sprite5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/Yellow Tiles/Sprite5"]
 position = Vector2( 0, -1 )
 shape = SubResource( 9 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite7" parent="World/Tiles/yellow tiles" instance=ExtResource( 6 )]
+[node name="Sprite7" parent="World/Tiles/Yellow Tiles" instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( 645.449, 42.9156 )
-texture = ExtResource( 10 )
+texture = ExtResource( 8 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/yellow tiles/Sprite7"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/Yellow Tiles/Sprite7"]
 position = Vector2( 0, -1 )
 shape = SubResource( 9 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite6" parent="World/Tiles/yellow tiles" instance=ExtResource( 6 )]
+[node name="Sprite6" parent="World/Tiles/Yellow Tiles" instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( 535.87, 40.863 )
-texture = ExtResource( 10 )
+texture = ExtResource( 8 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/yellow tiles/Sprite6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/Yellow Tiles/Sprite6"]
 position = Vector2( 0, -1 )
 shape = SubResource( 9 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite10" parent="World/Tiles/yellow tiles" instance=ExtResource( 6 )]
+[node name="Sprite10" parent="World/Tiles/Yellow Tiles" instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( 428.607, 41.9156 )
-texture = ExtResource( 10 )
+texture = ExtResource( 8 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/yellow tiles/Sprite10"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/Yellow Tiles/Sprite10"]
 position = Vector2( 0, -1 )
 shape = SubResource( 9 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite11" parent="World/Tiles/yellow tiles" instance=ExtResource( 6 )]
+[node name="Sprite11" parent="World/Tiles/Yellow Tiles" instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( 314.291, 41.863 )
-texture = ExtResource( 10 )
+texture = ExtResource( 8 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/yellow tiles/Sprite11"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Tiles/Yellow Tiles/Sprite11"]
 position = Vector2( 0, -1 )
 shape = SubResource( 9 )
 __meta__ = {

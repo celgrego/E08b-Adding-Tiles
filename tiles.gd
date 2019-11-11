@@ -1,4 +1,4 @@
-extends Sprite
+extends StaticBody2D
 
 var gray = preload("res://Assets/tile_gray.png")
 var red = preload("res://Assets/tile_red.png")
